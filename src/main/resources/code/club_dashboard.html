@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #E2F3FB;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        header, footer {
+            background-color: #027AA8;
+            height: 60px; /* You can adjust the height as needed */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .bg-image {
+            background-image: url('club.jpg'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            height: 300px; /* Adjust height as needed */
+            filter: blur(8px);
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+            color: white; /* Change color as needed */
+        }
+
+        .logo {
+            width: 80px; /* Adjust logo size */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .bio {
+            font-size: 16px;
+            text-align: justify;
+            margin: 10px 20px;
+        }
+
+        .keywords {
+            font-size: 20px;
+            margin: 15px 0;
+        }
+
+        .members {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .member {
+            margin: 0 10px;
+            text-align: center;
+        }
+
+        .member img {
+            width: 80px; /* Adjust member picture size */
+            height: 80px; /* Adjust member picture size */
+            border-radius: 50%;
+            border: 2px solid white; /* Optional border */
+        }
+
+        .member-name {
+            font-size: 18px;
+            margin-top: 5px;
+        }
+
+        .member-designation {
+            font-size: 14px;
+            color: #f0f0f0; /* Change color as needed */
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <div class="container">
+        <div class="bg-image"></div>
+        <img src="logo.jpeg" alt="Club Logo" class="logo"> <!-- Replace with your logo -->
+        <div class="content">
+            <h1>Club Name</h1>
+            <p class="bio">This is a short bio or about the club. It should provide a brief overview of the club's mission, activities, and values.</p>
+            <p class="keywords">Keywords: Music, Arts, Technology</p>
+            <div class="members">
+                <div class="member">
+                    <img src="pic.png" alt="Member 1"> <!-- Replace with actual member picture -->
+                    <div class="member-name">Member Name 1</div>
+                    <div class="member-designation">Designation 1</div>
+                </div>
+                <div class="member">
+                    <img src="pic.png" alt="Member 2"> <!-- Replace with actual member picture -->
+                    <div class="member-name">Member Name 2</div>
+                    <div class="member-designation">Designation 2</div>
+                </div>
+                <div class="member">
+                    <img src="pic.png" alt="Member 3"> <!-- Replace with actual member picture -->
+                    <div class="member-name">Member Name 3</div>
+                    <div class="member-designation">Designation 3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer></footer>
+</body>
+</html>

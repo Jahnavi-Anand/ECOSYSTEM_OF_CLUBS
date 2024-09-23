@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club Admin Login/Signup</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #E2F3FB;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: url('bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);  
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        #signup-form {
+            display: none;
+        }
+        #signup-form {
+            margin: auto;
+            padding: 20px;
+            height: auto;  
+            max-height: 80vh; 
+            overflow: hidden; 
+            overflow-y: scroll;
+            scrollbar-width: none;
+        }
+
+        #signup-form::-webkit-scrollbar {
+            display: none;  
+        }
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+        .form-group input[type="text"], 
+        .form-group input[type="email"], 
+        .form-group input[type="password"], 
+        .form-group input[type="tel"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            display: block;
+            box-sizing: border-box;
+        }
+        .keywords {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .keyword-option {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .keyword-option input[type="checkbox"] {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 1px solid #027AA8;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: white;
+        }
+        .keyword-option input[type="checkbox"]:checked {
+            background-color: #027AA8;
+        }
+        .toggle-form {
+            cursor: pointer;
+            color: #027AA8;
+            margin-top: 15px;
+            text-decoration: underline;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #027AA8;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #015f85;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div id="login-form">
+            <h2>CLUB ADMIN LOGIN</h2>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="login-username" placeholder="Enter your username">
+                <div id="login-username-error" class="error">Username is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="login-password" placeholder="Enter your password">
+                <div id="login-password-error" class="error">Password is required.</div>
+            </div>
+            <button onclick="login()">Login</button>
+            <div class="toggle-form" onclick="showSignup()">Don't have an account? Sign up</div>
+        </div>
+        <div id="signup-form">
+            <h2>CLUB ADMIN SIGNUP</h2>
+            <div class="form-group">
+                <label for="club-name">Club Name</label>
+                <input type="text" id="signup-club-name" placeholder="Enter your club name">
+                <div id="signup-club-name-error" class="error">Club name is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="signup-email" placeholder="Enter your email">
+                <div id="signup-email-error" class="error">Valid email is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="signup-phone" placeholder="Enter your phone number">
+                <div id="signup-phone-error" class="error">Valid phone number is required.</div>
+            </div>
+            <div class="form-group">
+                <label>Select Club Keywords (Max 3)</label>
+                <div class="keywords">
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-music" value="Music" class="keyword-checkbox">
+                        <label for="keyword-music">Music</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-acting" value="Acting" class="keyword-checkbox">
+                        <label for="keyword-acting">Acting</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-sports" value="Sports" class="keyword-checkbox">
+                        <label for="keyword-sports">Sports</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-technology" value="Technology" class="keyword-checkbox">
+                        <label for="keyword-technology">Technology</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-art" value="Art" class="keyword-checkbox">
+                        <label for="keyword-art">Art</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-coding" value="Coding" class="keyword-checkbox">
+                        <label for="keyword-coding">Coding</label>
+                    </div>
+                    <div class="keyword-option">
+                        <input type="checkbox" id="keyword-poetry" value="Poetry" class="keyword-checkbox">
+                        <label for="keyword-poetry">Poetry</label>
+                    </div>
+                </div>
+                <div id="signup-keywords-error" class="error">Select up to 3 keywords.</div>
+            </div>
+            <div class="form-group">
+                <label for="other">Other (if applicable)</label>
+                <input type="text" id="signup-other" placeholder="Enter other club type">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="signup-password" placeholder="Enter your password">
+                <div id="signup-password-error" class="error">Password is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Confirm Password</label>
+                <input type="password" id="signup-confirm-password" placeholder="Confirm your password">
+                <div id="signup-confirm-password-error" class="error">Passwords must match.</div>
+            </div>
+            <button onclick="signup()">Sign Up</button>
+            <div class="toggle-form" onclick="showLogin()">Already have an account? Login</div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.keyword-checkbox').forEach(function (checkbox) {
+            checkbox.addEventListener('change', function () {
+                let selected = document.querySelectorAll('.keyword-checkbox:checked');
+                if (selected.length > 3) {
+                    this.checked = false; // Uncheck if more than 3 are selected
+                }
+            });
+        });
+
+        function signup() {
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(e => e.style.display = 'none');
+
+            const clubName = document.getElementById('signup-club-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const phone = document.getElementById('signup-phone').value.trim();
+            const selectedKeywords = document.querySelectorAll('.keyword-checkbox:checked');
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            let valid = true;
+
+            // Club name validation
+            if (clubName === "") {
+                document.getElementById('signup-club-name-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Email validation
+            if (email === "") {
+                document.getElementById('signup-email-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Phone validation
+            if (phone === "") {
+                document.getElementById('signup-phone-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Keywords validation
+            if (selectedKeywords.length === 0 || selectedKeywords.length > 3) {
+                document.getElementById('signup-keywords-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Password validation
+            if (password === "") {
+                document.getElementById('signup-password-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Confirm password validation
+            if (confirmPassword !== password) {
+                document.getElementById('signup-confirm-password-error').style.display = 'block';
+                valid = false;
+            }
+
+            if (valid) {
+                // Proceed with signup (add your signup logic here)
+                alert('Sign up successful!');
+            }
+        }
+
+        function login() {
+            // Clear previous errors
+            document.querySelectorAll('.error').forEach(e => e.style.display = 'none');
+
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            let valid = true;
+
+            // Username validation
+            if (username === "") {
+                document.getElementById('login-username-error').style.display = 'block';
+                valid = false;
+            }
+
+            // Password validation
+            if (password === "") {
+                document.getElementById('login-password-error').style.display = 'block';
+                valid = false;
+            }
+
+            if (valid) {
+                // Proceed with login (add your login logic here)
+                alert('Login successful!');
+            }
+        }
+
+        function showSignup() {
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('signup-form').style.display = 'block';
+        }
+
+        function showLogin() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
